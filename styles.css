@@ -1,13 +1,13 @@
 :root {
-  --ink: #182033;
-  --muted: #687087;
-  --purple: #7557f6;
-  --purple-dark: #6040e8;
-  --mint: #2ecf9f;
-  --cream: #fbfaf7;
+  --ink: #393838;
+  --muted: #6f6c6b;
+  --purple: #e75a29;
+  --purple-dark: #c84318;
+  --mint: #f39443;
+  --cream: #fdfbf9;
   --white: #fff;
   --line: #e8e8ef;
-  --shadow: 0 24px 70px rgba(42, 35, 86, 0.12);
+  --shadow: 0 24px 70px rgba(79, 77, 77, 0.12);
 }
 
 * { box-sizing: border-box; }
@@ -20,8 +20,8 @@ body {
   overflow-x: hidden;
   color: var(--ink);
   background:
-    radial-gradient(circle at 15% 20%, rgba(117, 87, 246, 0.08), transparent 30%),
-    radial-gradient(circle at 88% 75%, rgba(46, 207, 159, 0.09), transparent 27%),
+    radial-gradient(circle at 15% 20%, rgba(231, 90, 41, 0.08), transparent 30%),
+    radial-gradient(circle at 88% 75%, rgba(243, 148, 67, 0.10), transparent 27%),
     var(--cream);
   font-family: "DM Sans", sans-serif;
 }
@@ -39,8 +39,8 @@ button { cursor: pointer; }
   opacity: 0.45;
 }
 
-.ambient-one { top: -260px; right: -120px; background: #dfd8ff; }
-.ambient-two { bottom: -300px; left: -150px; background: #d4faed; }
+.ambient-one { top: -260px; right: -120px; background: #ffd9cb; }
+.ambient-two { bottom: -300px; left: -150px; background: #ffe6ca; }
 
 .app-shell {
   width: min(1180px, calc(100% - 48px));
@@ -79,6 +79,23 @@ button { cursor: pointer; }
   box-shadow: 0 9px 24px rgba(117, 87, 246, 0.3);
 }
 
+.phoenix-brand { gap: 14px; }
+.phoenix-brand img {
+  width: 145px;
+  height: auto;
+  display: block;
+}
+.brand-divider {
+  width: 1px;
+  height: 25px;
+  background: #d9d4d1;
+}
+.phoenix-brand > span:last-child {
+  color: #4f4d4d;
+  font-size: 15px;
+  white-space: nowrap;
+}
+
 .brand-mark svg { width: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
 
 .event-badge {
@@ -94,7 +111,7 @@ button { cursor: pointer; }
   font-weight: 600;
 }
 
-.live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 0 4px rgba(46,207,159,.13); }
+.live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--purple); box-shadow: 0 0 0 4px rgba(231,90,41,.13); }
 
 .screen { display: none; flex: 1; animation: screen-in .45s ease both; }
 .screen.active { display: flex; }
@@ -132,7 +149,7 @@ h1 {
 
 h1 span {
   color: transparent;
-  background: linear-gradient(110deg, var(--purple), #a46bf4 55%, #25b98e);
+  background: linear-gradient(110deg, var(--purple), #f58b40 55%, #4f4d4d);
   background-clip: text;
   -webkit-background-clip: text;
 }
@@ -167,7 +184,7 @@ input {
   transition: .2s ease;
 }
 
-input:focus { border-color: var(--purple); box-shadow: 0 0 0 4px rgba(117,87,246,.1); background: white; }
+input:focus { border-color: var(--purple); box-shadow: 0 0 0 4px rgba(231,90,41,.1); background: white; }
 
 .consent-row {
   display: flex !important;
@@ -202,12 +219,12 @@ input:focus { border-color: var(--purple); box-shadow: 0 0 0 4px rgba(117,87,246
   border-radius: 13px;
   color: white;
   background: linear-gradient(135deg, var(--purple), var(--purple-dark));
-  box-shadow: 0 12px 25px rgba(96,64,232,.23);
+  box-shadow: 0 12px 25px rgba(200,67,24,.23);
   font-weight: 700;
   transition: transform .2s, box-shadow .2s;
 }
 
-.primary-button:hover { transform: translateY(-2px); box-shadow: 0 16px 30px rgba(96,64,232,.3); }
+.primary-button:hover { transform: translateY(-2px); box-shadow: 0 16px 30px rgba(200,67,24,.3); }
 .primary-button svg { width: 19px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
 .quiz-facts { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 24px; color: #7b8191; font-size: 12px; }
@@ -226,10 +243,10 @@ input:focus { border-color: var(--purple); box-shadow: 0 0 0 4px rgba(117,87,246
   box-shadow: var(--shadow);
 }
 
-.brain-glow { position: absolute; width: 210px; height: 210px; border-radius: 50%; background: rgba(117,87,246,.12); filter: blur(10px); }
-.brain-icon { position: relative; width: 180px; fill: rgba(117,87,246,.09); stroke: var(--purple); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 14px 18px rgba(117,87,246,.18)); }
+.brain-glow { position: absolute; width: 210px; height: 210px; border-radius: 50%; background: rgba(231,90,41,.12); filter: blur(10px); }
+.brain-icon { position: relative; width: 180px; fill: rgba(231,90,41,.08); stroke: var(--purple); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 14px 18px rgba(231,90,41,.18)); }
 
-.orbit { position: absolute; border: 1px dashed rgba(117,87,246,.2); border-radius: 50%; }
+.orbit { position: absolute; border: 1px dashed rgba(231,90,41,.22); border-radius: 50%; }
 .orbit-one { inset: 15px; transform: rotate(14deg); }
 .orbit-two { inset: 66px -12px; transform: rotate(-20deg); }
 
@@ -255,8 +272,8 @@ input:focus { border-color: var(--purple); box-shadow: 0 0 0 4px rgba(117,87,246
 @keyframes float { 50% { transform: translateY(-9px); } }
 
 .mini-icon { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 10px; font-size: 11px; font-weight: 800; }
-.mini-icon.purple { color: var(--purple); background: #eeeaff; }
-.mini-icon.green { color: #179d76; background: #dff9f0; }
+.mini-icon.purple { color: var(--purple); background: #fff0ea; }
+.mini-icon.green { color: #c84318; background: #fff1e4; }
 .mini-icon svg { width: 20px; fill: none; stroke: currentColor; stroke-width: 2.3; }
 
 .spark { position: absolute; color: var(--purple); }
@@ -269,7 +286,7 @@ input:focus { border-color: var(--purple); box-shadow: 0 0 0 4px rgba(117,87,246
 .quiz-header .eyebrow { margin-bottom: 10px; }
 .progress-track { width: 100%; height: 7px; overflow: hidden; border-radius: 99px; background: #e9e7f0; }
 .progress-track span { display: block; width: 20%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--purple), #9f79fa); transition: width .35s ease; }
-.score-chip { padding: 9px 14px; border-radius: 999px; background: #eeeaff; color: var(--purple-dark); font-size: 13px; font-weight: 700; }
+.score-chip { padding: 9px 14px; border-radius: 999px; background: #fff0ea; color: var(--purple-dark); font-size: 13px; font-weight: 700; }
 
 .question-card {
   padding: clamp(28px, 5vw, 48px);
@@ -280,7 +297,7 @@ input:focus { border-color: var(--purple); box-shadow: 0 0 0 4px rgba(117,87,246
   backdrop-filter: blur(12px);
 }
 
-.question-icon { width: 48px; height: 48px; display: grid; place-items: center; margin-bottom: 22px; border-radius: 14px; color: var(--purple); background: #eeeaff; font-family: "Manrope"; font-size: 13px; font-weight: 800; }
+.question-icon { width: 48px; height: 48px; display: grid; place-items: center; margin-bottom: 22px; border-radius: 14px; color: var(--purple); background: #fff0ea; font-family: "Manrope"; font-size: 13px; font-weight: 800; }
 .question-card h2 { margin: 0 0 28px; font-size: clamp(23px, 3.6vw, 32px); line-height: 1.3; letter-spacing: -.025em; }
 .answer-list { display: grid; gap: 12px; }
 
@@ -298,7 +315,7 @@ input:focus { border-color: var(--purple); box-shadow: 0 0 0 4px rgba(117,87,246
   transition: .2s ease;
 }
 
-.answer-button:hover:not(:disabled) { border-color: #bdb1fa; transform: translateX(3px); background: #faf9ff; }
+.answer-button:hover:not(:disabled) { border-color: #f0ad93; transform: translateX(3px); background: #fffaf8; }
 .answer-letter { width: 31px; height: 31px; flex: 0 0 31px; display: grid; place-items: center; border-radius: 9px; background: #f1f1f5; font-weight: 700; font-size: 12px; }
 .answer-button.correct { border-color: #69d7b6; color: #177c60; background: #edfbf7; }
 .answer-button.correct .answer-letter { color: white; background: var(--mint); }
@@ -358,6 +375,8 @@ footer a:hover { color: var(--purple); }
   .app-shell { width: min(100% - 28px, 600px); }
   .topbar { height: 75px; }
   .event-badge { display: none; }
+  .phoenix-brand img { width: 118px; }
+  .phoenix-brand > span:last-child { font-size: 12px; }
   .welcome-screen { flex-direction: column; padding-top: 30px; text-align: center; }
   .welcome-copy { width: 100%; }
   .lead { margin-left: auto; margin-right: auto; font-size: 16px; }
