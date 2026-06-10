@@ -1,4 +1,5 @@
 const QUESTION_COUNT = 5;
+const RESPONSE_ENDPOINT = "https://script.google.com/macros/s/AKfycbzer1QruZo_kSUIRHWAfSCK5f4yiA2oNUcxryu1B-abiGQ87tvcmz1lWTZCinWKQotxwA/exec";
 
 const questions = [
   { q: "What does AI stand for?", a: ["Artificial Intelligence", "Automated Internet", "Advanced Input", "Artificial Information"], c: 0, e: "AI stands for Artificial Intelligence: computer systems designed to perform tasks that usually require human intelligence." },
@@ -59,7 +60,8 @@ const state = {
   score: 0,
   answered: false,
   startedAt: 0,
-  name: ""
+  name: "",
+  responses: []
 };
 
 const screens = {
@@ -101,6 +103,7 @@ function startQuiz(event) {
   state.selected = shuffle(questions).slice(0, QUESTION_COUNT);
   state.index = 0;
   state.score = 0;
+  state.responses = [];
   state.startedAt = Date.now();
   showScreen("quiz");
   renderQuestion();
@@ -140,6 +143,12 @@ function selectAnswer(selectedButton, item) {
   state.answered = true;
   const isCorrect = selectedButton.dataset.correct === "true";
   if (isCorrect) state.score += 1;
+  state.responses.push({
+    question: item.q,
+    selectedAnswer: selectedButton.querySelector("span:last-child").textContent,
+    correctAnswer: item.a[item.c],
+    isCorrect
+  });
 
   answerList.querySelectorAll(".answer-button").forEach((button) => {
     button.disabled = true;
@@ -161,6 +170,43 @@ function nextQuestion() {
     renderQuestion();
   } else {
     showResults();
+  }
+}
+
+async function saveResponse(elapsedSeconds) {
+  const status = document.querySelector("#save-status");
+
+  if (!RESPONSE_ENDPOINT) {
+    status.textContent = "Response storage is being connected.";
+    status.className = "save-status failed";
+    return;
+  }
+
+  const submission = {
+    name: state.name,
+    submittedAt: new Date().toISOString(),
+    score: state.score,
+    totalQuestions: QUESTION_COUNT,
+    durationSeconds: elapsedSeconds,
+    responses: state.responses,
+    userAgent: navigator.userAgent
+  };
+
+  status.textContent = "Saving your response...";
+  status.className = "save-status saving";
+
+  try {
+    await fetch(RESPONSE_ENDPOINT, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
+      body: new URLSearchParams({ payload: JSON.stringify(submission) })
+    });
+    status.textContent = "Your response has been saved. Thank you!";
+    status.className = "save-status saved";
+  } catch (error) {
+    status.textContent = "Your score is complete, but the response could not be saved.";
+    status.className = "save-status failed";
   }
 }
 
@@ -189,11 +235,13 @@ function showResults() {
   document.querySelector("#result-ring").style.background =
     `conic-gradient(var(--purple) ${percentage}%, #e8e6ef ${percentage}%)`;
   showScreen("result");
+  saveResponse(elapsedSeconds);
 }
 
 startForm.addEventListener("submit", startQuiz);
 nextButton.addEventListener("click", nextQuestion);
 restartButton.addEventListener("click", () => {
   document.querySelector("#participant-name").value = state.name;
+  document.querySelector("#response-consent").checked = false;
   showScreen("welcome");
 });

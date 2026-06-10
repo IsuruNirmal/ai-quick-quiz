@@ -32,14 +32,18 @@
         <p class="lead">Take a quick, friendly challenge and discover how artificial intelligence already fits into the world around us.</p>
 
         <form id="start-form" class="start-form">
-          <label for="participant-name">Your name <span>(optional)</span></label>
+          <label for="participant-name">Your name</label>
           <div class="input-row">
-            <input id="participant-name" type="text" maxlength="40" autocomplete="name" placeholder="Enter your name">
+            <input id="participant-name" type="text" maxlength="60" autocomplete="name" placeholder="Enter your name" required>
             <button class="primary-button" type="submit">
               Start the quiz
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
             </button>
           </div>
+          <label class="consent-row" for="response-consent">
+            <input id="response-consent" type="checkbox" required>
+            <span>I agree that my name and quiz responses may be saved for this event.</span>
+          </label>
         </form>
 
         <div class="quiz-facts">
@@ -110,6 +114,7 @@
         <p class="eyebrow">Quiz complete</p>
         <h2 id="result-title">Nicely done!</h2>
         <p id="result-message"></p>
+        <p id="save-status" class="save-status" role="status" aria-live="polite"></p>
         <div class="result-stats">
           <div><strong id="correct-total">0</strong><span>Correct</span></div>
           <div><strong id="time-total">0:00</strong><span>Time</span></div>

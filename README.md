@@ -23,3 +23,13 @@ After publishing:
 - No participant information is stored or sent anywhere.
 - The QR generator uses QuickChart to create the downloadable QR image.
 - A backend would be required to guarantee that no two participants ever receive the same combination.
+
+## Save participant responses
+
+The quiz can save names, scores, and all five answers to Google Sheets:
+
+1. Create a Google Sheet.
+2. Open **Extensions > Apps Script**.
+3. Paste the contents of `google-apps-script.gs`.
+4. Deploy it as a web app that executes as you and allows access to anyone.
+5. Paste the deployment URL into `RESPONSE_ENDPOINT` in `app.js`.

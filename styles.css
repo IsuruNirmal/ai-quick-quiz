@@ -169,6 +169,28 @@ input {
 
 input:focus { border-color: var(--purple); box-shadow: 0 0 0 4px rgba(117,87,246,.1); background: white; }
 
+.consent-row {
+  display: flex !important;
+  align-items: flex-start;
+  gap: 9px;
+  margin-top: 13px;
+  color: var(--muted);
+  font-weight: 400 !important;
+  line-height: 1.45;
+  cursor: pointer;
+}
+
+.consent-row input {
+  width: 17px;
+  height: 17px;
+  min-width: 17px;
+  flex: 0 0 17px;
+  margin: 1px 0 0;
+  accent-color: var(--purple);
+}
+
+.consent-row span { color: var(--muted) !important; }
+
 .primary-button {
   display: inline-flex;
   align-items: center;
@@ -298,6 +320,10 @@ input:focus { border-color: var(--purple); box-shadow: 0 0 0 4px rgba(117,87,246
 .result-card .eyebrow { margin-bottom: 10px; }
 .result-card h2 { margin: 0 0 10px; font-size: 35px; }
 .result-card > p:not(.eyebrow) { margin: 0 auto; max-width: 470px; color: var(--muted); line-height: 1.65; }
+.result-card .save-status { margin-top: 14px !important; font-size: 12px; font-weight: 700; }
+.save-status.saving { color: #7c65d8 !important; }
+.save-status.saved { color: #179d76 !important; }
+.save-status.failed { color: #b85c5c !important; }
 .result-stats { display: grid; grid-template-columns: repeat(3, 1fr); margin: 32px 0; padding: 20px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .result-stats div + div { border-left: 1px solid var(--line); }
 .result-stats strong, .result-stats span { display: block; }
